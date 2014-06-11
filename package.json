@@ -1,7 +1,7 @@
 {
   "name": "jsdoc-at-examples",
-  "description": "JSDoc @Examples will let yout write tests in comments, just above your JavaScript functions.",
-  "version": "0.0.1",
+  "description": "Write tests in comments, just above your functions.",
+  "version": "0.0.3",
   "homepage": "https://github.com/fru/jsdoc-at-examples",
   "author": {
     "name": "Florian Rueberg",
