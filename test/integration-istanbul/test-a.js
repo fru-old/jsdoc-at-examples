@@ -1,0 +1,5 @@
+/*
+ * @expose e
+ */
+
+alert("test");
