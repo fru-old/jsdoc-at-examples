@@ -18,7 +18,7 @@ function isInteger(x) {
 }
 ```
 
-The best part is, now you can actually test that these examples hold true. This is especially great with Regular Expressions:
+The best part is, now you can actually test that these examples hold true. This is especially great with regular expressions:
 
 ```javascript
 (function(){
