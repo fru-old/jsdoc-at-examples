@@ -43,6 +43,12 @@ The @expose JSDoc tag adds gYearMonth to the global scope.
 FAQ
 ---
 
+**How should use this library?**
+Everybody that likes to add the @examples syntax to there testing workflow or tool should have a look. If you would like to integrate this into your tool please feel free to contact me. 
+
+**Does this generate JSDoc project documentation?**
+No it does not. For this use e.g. [grunt-jsdoc](https://github.com/krampstudio/grunt-jsdoc). Also have a look at the sample folder where in every grunt build 
+
 **This looks a lot like [autodoc](https://github.com/dtao/autodoc). Why not just use autodoc or fork it?**
 
 I really like the idea of autodoc, but didn't like that tests run in the documentation. Also in my opinion the goal to be a full blown JSDoc suit adds a lot of unnecessary weight and clutter. So this project treats @examples tests like real tests and a seperate JSDoc parser can be used to generate the documentation. 
