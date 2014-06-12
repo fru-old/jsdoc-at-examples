@@ -53,6 +53,6 @@ No it does not. For this use e.g. [grunt-jsdoc](https://github.com/krampstudio/g
 
 **This looks a lot like [autodoc](https://github.com/dtao/autodoc). Why not just use autodoc or fork it?**
 
-I really liked the idea of autodoc, but not that tests are in the documentation. Also in my opinion the goal to be a full blown JSDoc suit adds a lot of unnecessary weight and clutter. So this project treats @examples tests like real tests and a seperate JSDoc parser can be used to generate the documentation. 
+I really liked the idea of autodoc, but not that passed and failed tests are in the documentation. Also in my opinion the goal to be a full blown JSDoc suit adds a lot of unnecessary weight and clutter. So this project treats @examples tests like real tests and a seperate JSDoc parser can be used to generate the documentation. 
 
 
