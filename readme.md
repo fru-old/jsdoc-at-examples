@@ -1,7 +1,7 @@
 @Examples
 =========
 
-Use the @examples JSDoc tag to write small and wonderfully concise tests just above your code. Simple examples are worth a thousand words so here goes:
+Use the @examples JSDoc tag to write small and wonderfully concise tests in comments, just above your code. Simple examples are worth a thousand words so here goes:
 
 ```javascript
 /**
