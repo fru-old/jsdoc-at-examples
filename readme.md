@@ -38,7 +38,7 @@ The best part is, now you can actually test that these examples hold true. This 
 })();
 ```
 
-The @expose JSDoc tag adds gYearMonth to the global scope. 
+The @expose JSDoc tag adds gYearMonth to the global scope after it is defined. 
 
 FAQ
 ---
