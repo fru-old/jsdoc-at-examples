@@ -24,6 +24,7 @@ The best part is, now you can actually test that these examples hold true. This 
 (function(){
 
   /**
+   * XSD shema type xsd:gYearMonth
    * @expose gYearMonth
    * @examples
    * gYearMonth.test('1989-05')    // true
