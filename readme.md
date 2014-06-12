@@ -44,9 +44,11 @@ FAQ
 ---
 
 **How should use this library?**
-Everybody that likes to add the @examples syntax to there testing workflow or tool should have a look. If you would like to integrate this into your tool please feel free to contact me. 
+
+Everybody that likes to add the @examples syntax to there testing workflow or tool should have a look. If you would like to discuss the integration into your tool, please feel free to contact me. 
 
 **Does this generate JSDoc project documentation?**
+
 No it does not. For this use e.g. [grunt-jsdoc](https://github.com/krampstudio/grunt-jsdoc). Also have a look at the sample folder where in every grunt build 
 
 **This looks a lot like [autodoc](https://github.com/dtao/autodoc). Why not just use autodoc or fork it?**
