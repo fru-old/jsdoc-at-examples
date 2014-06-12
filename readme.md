@@ -35,7 +35,6 @@ The best part is, now you can actually test that these examples hold true. This 
   var gYearMonth = /^(19|20)\d\d-(0[1-9]|1[012])$/;
 
 })();
-
 ```
 
 The @expose JSDoc tag adds gYearMonth to the global scope. 
