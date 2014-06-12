@@ -1,4 +1,4 @@
-@Examples
+@examples
 =========
 
 Use the @examples JSDoc tag to write small and wonderfully concise tests, just above your code. Simple examples are worth a thousand words so here goes:
@@ -39,6 +39,11 @@ The best part is, now you can actually test that these examples hold true. This 
 ```
 
 The @expose JSDoc tag adds gYearMonth to the global scope after it is declared. Without this the test would fail because gYearMonth is undefined.
+
+//throws
+//deep equals
+//comment
+function()
 
 FAQ
 ---
