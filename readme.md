@@ -18,8 +18,7 @@ function isInteger(x) {
 }
 ```
 
-For me this is wonderfully concise and the best part, now you can actually test that these examples hold true.
-This is really powerfull with Regular Expressions:
+For me this is wonderfully concise and the best part, now you can actually test that these examples hold true. This is really powerfull with Regular Expressions:
 
 ```javascript
 (function(){
@@ -34,7 +33,6 @@ This is really powerfull with Regular Expressions:
    * gYearMonth.test('2100-01')    // false
    */
   var gYearMonth = /^(19|20)\d\d-(0[1-9]|1[012])$/;
-
 
 })();
 
