@@ -51,7 +51,6 @@ The next example illustrates that any javascript object can be used as an expect
  * if(foobar)done() // throws
  * typeof foobar    // "undefined"
  * {wrap: foobar}   // {wrap: void 0}
- *
  */
 ```
 
