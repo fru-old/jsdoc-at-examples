@@ -4,22 +4,22 @@ var estraverse = require('estraverse');
 
 module.exports = function(program, comments){
 
-	estraverse.traverse(program, {
-      enter: function (node, parent) {
-        if(node.body && node.body.length){
-          for(var i = 0; i < node.body.length; i++){
-            var comments = node.body[i].leadingComments;
-            if(comments){
-              buildAssignments(node.body, i+1, parseComments(comments));
-            }
-            var trailing = node.body[i].trailingComments;
-            if(trailing){
-              buildAssignments(node.body, i+1, parseComments(trailing));
-            }
+  estraverse.traverse(program, {
+    enter: function (node, parent) {
+      if(node.body && node.body.length){
+        for(var i = 0; i < node.body.length; i++){
+          var comments = node.body[i].leadingComments;
+          if(comments){
+            buildAssignments(node.body, i+1, parseComments(comments));
+          }
+          var trailing = node.body[i].trailingComments;
+          if(trailing){
+            buildAssignments(node.body, i+1, parseComments(trailing));
           }
         }
       }
-    });
+    }
+  });
 }
 
 function buildAssignments(target, index, comment){
@@ -114,6 +114,6 @@ function parseComments(comments){
     }
   }
 
-	console.log(result);
+  console.log(result);
   return result;
 }
