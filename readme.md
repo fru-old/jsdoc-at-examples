@@ -39,6 +39,7 @@ The best part is, now you can actually test that these examples hold true. This 
 ```
 
 The @expose JSDoc tag adds gYearMonth to the global scope after it is declared. Without this the test would fail because gYearMonth is undefined. 
+The next example illustrates that any javascript object can be used as an expected values and equality is checked using a recursive `deepEquals` approach. When an except is expected use `throws`.
 
 ```javascript
 /**
