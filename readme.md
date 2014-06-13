@@ -56,7 +56,7 @@ The next example illustrates that any javascript object can be used as an expect
  */
 ```
 
-For more examples have a look at the sample folder. Please submit an [issue](https://github.com/fru/jsdoc-at-examples/issues) if you encounter any trouble.
+For more examples and features have a look at the sample folder. Please submit an [issue](https://github.com/fru/jsdoc-at-examples/issues) if you encounter any trouble.
 
 FAQ
 ---
