@@ -42,7 +42,7 @@ The @expose JSDoc tag adds gYearMonth to the global scope after it is declared. 
 
 ```javascript
 /**
- * JavaScript undefined
+ * JavaScript edge cases: undefined
  * @examples
  *
  * // foobar is never defined
