@@ -38,12 +38,21 @@ The best part is, now you can actually test that these examples hold true. This 
 })();
 ```
 
-The @expose JSDoc tag adds gYearMonth to the global scope after it is declared. Without this the test would fail because gYearMonth is undefined.
+The @expose JSDoc tag adds gYearMonth to the global scope after it is declared. Without this the test would fail because gYearMonth is undefined. 
 
-//throws
-//deep equals
-//comment
-function()
+```javascript
+/**
+ * JavaScript undefined
+ * @examples
+ * // foobar is never defined
+ * typeof foobar     // "undefined"
+ * // if used an error occurs
+ * if(foobar)done(); // throws
+ * // deep equal comparison
+ * {wrap: foobar}    // {wrap: void 0}
+ */
+```
+
 
 FAQ
 ---
