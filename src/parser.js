@@ -24,14 +24,35 @@ module.exports = function(program, comments){
 
 function buildAssignments(target, index, comment){
   for(var i in comment.expose){
-    var e = buildAssignment(comment.expose[i]);
+    var e = buildAssignment(comment.expose[i].key);
     target.splice(index, 0, e);
   }
 }
 
-function buildAssignment(expose){
+function buildAssignment(key){
   // TODO setting
-  var value = "grunt-testing-" + expose.key;
+  var value = "try{this." + key + "=" + key + ";}catch(e){};";
+  return {
+    "type": "ExpressionStatement",
+    "expression": {
+      "type": "CallExpression",
+      "callee": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "Function"
+        },
+        "arguments": [{
+          "type": "Literal",
+          "value": value,
+          "raw": '"' + value + '"'
+        }]
+      },
+      "arguments": []
+    }
+  };
+  
+  
   return {
     "type": "ExpressionStatement",
     "expression": {
