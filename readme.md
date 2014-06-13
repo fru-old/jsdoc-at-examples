@@ -43,7 +43,8 @@ The @expose JSDoc tag adds gYearMonth to the global scope after it is declared. 
 The next example illustrates that any javascript object can be used as an expected values and equality is checked using a recursive `deepEquals` approach. When an exception is expected use `throws`.
 
 ```javascript
-/* JavaScript edge cases: undefined
+/**
+ * JavaScript edge cases: undefined
  * @examples
  *
  * // foobar is never defined
@@ -51,6 +52,7 @@ The next example illustrates that any javascript object can be used as an expect
  * if(foobar)done() // throws
  * typeof foobar    // "undefined"
  * {wrap: foobar}   // {wrap: void 0}
+ *
  */
 ```
 
