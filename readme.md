@@ -44,11 +44,13 @@ The @expose JSDoc tag adds gYearMonth to the global scope after it is declared. 
 /**
  * JavaScript undefined
  * @examples
+ *
  * // foobar is never defined
  *
  * typeof foobar     // "undefined"
  * if(foobar)done(); // throws
  * {wrap: foobar}    // {wrap: void 0}
+ *
  */
 ```
 
