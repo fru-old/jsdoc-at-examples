@@ -1,6 +1,8 @@
 @examples
 =========
 
+[![Dependency Status](https://david-dm.org/fru/jsdoc-at-examples.png?theme=shields.io)](https://david-dm.org/fru/jsdoc-at-examples)
+
 Use the @examples JSDoc tag to write small and wonderfully concise tests, just above your code. Simple examples are worth a thousand words so here goes:
 
 ```javascript

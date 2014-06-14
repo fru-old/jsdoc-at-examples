@@ -1,5 +1,0 @@
-/*
- * @expose e
- */
-
-alert("test");
