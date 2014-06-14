@@ -74,17 +74,40 @@ function parseComment(comment, append){
  * @private
  */
 function parseExampleLine(left, right, result){
-  if(left && right){
-    if(right === 'setup' || right === 'teardown'){
-      result[right].push(left);
-    }else if(right === 'throws'){
-      result.tests.push({ type: right, right: '', left: left });
+  if(!left || !right)return false; // did not find test
+  
+  if(right === 'setup' || right === 'teardown'){
+    result[right].push(left);
+  }else{
+    var test = {
+      left: wrapEval(left),
+      title: left + ' // ' + right;
+    };
+
+    if(right === 'throws'){
+      test.type  = right;
+      test.right = '';
     }else{
-      result.tests.push({ type: 'deepEquals', right: right, left: left });
+      test.type  = 'deepEquals';
+      test.right = wrapEval(right);
     }
-    return true; 
+
+    // MAYBE TODO: Filter strings to reduce false positives
+    if(RegExp(matchIdentifierName('done')).test(left)){
+      test.type += 'Async'; 
+    }
+
+    result.tests.push(single);
   } 
-  return false; // did not find test
+  return true;
+}
+
+/**
+ * Wrap expression in eval call
+ * @private
+ */
+function wrapEval(expression){
+  return 'eval("' + expression.replace(/"/g, '\\"') + '")';
 }
 
 /**
@@ -93,13 +116,13 @@ function parseExampleLine(left, right, result){
  * @private 
  */
 function splitLines(comment){
+  if(!comment || !(comment = comment[1]))return ''; 
   
-  var result = [];
-  if(!(comment && (comment = comment[1])))return ''; 
+  var result = comment.split('\n'), line;
 
-  for(var i in comment.split('\n')){
+  for(var i in result){
     // Remove a leading asterisk
-    var line = result[i].replace(/^\s*\*?(.*)$/, "$1").split('//');
+    line = result[i].replace(/^\s*\*?(.*)$/, "$1").split('//');
     // Split line at // and return the first two segments
     result[i] = [(line[0]||'').trim(), (line[1]||'').trim()];
   }
@@ -142,6 +165,16 @@ function buildExpose(key){
  */
 function spansLine(regex){
   return '(?:^|\\n)\\s*\\*?\\s*'+regex+'\\s*(?=$|\\n)';
+}
+
+/**
+ * Match specific identifier name
+ * @private
+ */
+function matchIdentifierName(name){
+  var noid = identifier().replace('[', '[^');
+  noid = '(^|$|' + noid + ')';
+  return noid+name+noid;
 }
 
 /**
