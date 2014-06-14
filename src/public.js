@@ -23,7 +23,6 @@ function Examples(){
         tokens: true
       });
       estraverse.attachComments(program, program.comments, program.tokens);
-      require('fs').writeFile(__dirname + "/out.js", JSON.stringify(program, null, 2), function(err) {});
       this.parse(program, tests);
       return escodegen.generate(program);
     }else{

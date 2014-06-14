@@ -1,10 +1,5 @@
-/* 
- * Leading 
- */
-
-
-(function(){
 /**
+ * @expose isInteger
  * @examples
  * isInteger(5)     // true
  * isInteger(5.0)   // true
@@ -16,4 +11,3 @@
 function isInteger(x) {
   return x === Math.floor(x);
 }
-})()

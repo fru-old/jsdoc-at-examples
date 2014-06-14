@@ -7,29 +7,31 @@ var estraverse = require('estraverse');
  * to tests.
  */
 module.exports = function(program, tests){
-  estraverse.traverse(program, {
 
-    // Called on the document root and on every statemenet 
-    enter: function (node, parent) {
-      if(!node.body)return;
-      for(var i = 0; i < node.body.length; i++){
+  // Called on the program root and on every statemenet 
+  function enter(node, parent) {
+    if(!node.body)return;
+    for(var i = 0; i < node.body.length; i++){
 
-        // Function to append a statement after the current statement
-        var append  = [].splice.bind(node.body, i+1, 0);
+      // Function to append a statement after the current statement
+      var append  = [].splice.bind(node.body, i+1, 0);
 
-        // Get all comments associated with the current statement
-        var current = node.body[i];
-        var comment = [].concat(current.leadingComments, current.trailingComments);
+      // Get all comments associated with the current statement
+      var current = node.body[i];
+      var comment = [].concat(current.leadingComments, current.trailingComments);
 
-        // For every comment find the @examples and @expose tags 
-        for(var j in comment){
-          if(!comment[j])continue;
-          var test = parseComment(comment[j], append);
-          if(test)tests.push(test);
-        }
+      // For every comment find the @examples and @expose tags 
+      for(var j in comment){
+        if(!comment[j])continue;
+        var test = parseComment(comment[j], append);
+        if(test)tests.push(test);
       }
     }
+  }
 
+  enter({body : [program]});
+  estraverse.traverse(program, {
+    enter: enter
   });
 }
 
