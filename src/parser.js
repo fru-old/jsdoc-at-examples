@@ -19,10 +19,11 @@ module.exports = function(program, tests){
 
         // Get all comments associated with the current statement
         var current = node.body[i];
-        var comment = [].concat(n.leadingComments, n.trailingComments);
+        var comment = [].concat(current.leadingComments, current.trailingComments);
 
         // For every comment find the @examples and @expose tags 
         for(var j in comment){
+          if(!comment[j])continue;
           var test = parseComment(comment[j], append);
           if(test)tests.push(test);
         }
@@ -49,7 +50,7 @@ function parseComment(comment, append){
   // Normalize comment
   comment = comment.value.replace(/\r/g,'');
   // Remove empty lines from comment
-  comment = comment.replace(RegExp(spansline('')), '');
+  comment = comment.replace(RegExp(spansLine('')), '');
   // Build @expose and @examples regex
   expose   = RegExp(spansLine('@expose\\s*('+identifier()+'*)'),'g');
   examples = RegExp(spansLine('@examples')+'((?:'+spansLine('.*//.*')+')*)','g');
@@ -81,14 +82,14 @@ function parseExampleLine(left, right, result){
   }else{
     var test = {
       left: wrapEval(left),
-      title: left + ' // ' + right;
+      title: left + ' // ' + right
     };
 
     if(right === 'throws'){
       test.type  = right;
       test.right = '';
     }else{
-      test.type  = 'deepEquals';
+      test.type  = 'deepEqual';
       test.right = wrapEval(right);
     }
 
@@ -97,7 +98,7 @@ function parseExampleLine(left, right, result){
       test.type += 'Async'; 
     }
 
-    result.tests.push(single);
+    result.tests.push(test);
   } 
   return true;
 }
@@ -341,5 +342,5 @@ function identifier(){
   80-\\ua983\\ua9b3-\\ua9c0\\ua9d0-\\ua9d9\\uaa29-\\uaa36\\uaa43\\uaa4c\\uaa4d\\ua\
   a50-\\uaa59\\uaa7b\\uaab0\\uaab2-\\uaab4\\uaab7\\uaab8\\uaabe\\uaabf\\uaac1\\uaa\
   eb-\\uaaef\\uaaf5\\uaaf6\\uabe3-\\uabea\\uabec\\uabed\\uabf0-\\uabf9\\ufb1e\\ufe\
-  00-\\ufe0f\\ufe20-\\ufe26\\ufe33\\ufe34\\ufe4d-\\ufe4f\\uff10-\\uff19\\uff3f]';
+  00-\\ufe0f\\ufe20-\\ufe26\\ufe33\\ufe34\\ufe4d-\\ufe4f\\uff10-\\uff19\\uff3f]'.replace(/\s/g, '');
 }

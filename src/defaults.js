@@ -4,7 +4,7 @@
 module.exports = function(type){
 
   if(type === 'qunit'){
-
+    
     this.set('wrap-setup-teardown', 'QUnit.module("", { <%content%> });');
     this.set('wrap-teardowns', 'setup: function(){ <%content%> },');
     this.set('wrap-teardown', '<%content%>;');
