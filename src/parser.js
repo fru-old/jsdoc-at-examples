@@ -153,7 +153,7 @@ function buildExpose(key){
       'type': 'CallExpression',
       'callee': {
         'type': 'Identifier',
-        'name': 'evale'
+        'name': 'eval'
       },
       'arguments': [{
         'type': 'Literal',

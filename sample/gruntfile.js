@@ -9,7 +9,7 @@ module.exports = function (grunt) {
           instrumentedFiles: 'temp/',
           htmlReport: 'report/'
         },
-        atExamples: 'qunit.html'
+        addJSDocExamples: 'qunit.html'
       },
       all: ['qunit.html']
     }
