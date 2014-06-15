@@ -1,6 +1,9 @@
 var esprima    = require('esprima');
 var estraverse = require('estraverse');
 var escodegen  = require('escodegen');
+var temp       = require('temp').track();
+var fs         = require('fs');
+var path       = require('path');
 
 function Examples(){
   var tests = [], templates = [];
@@ -39,6 +42,21 @@ function Examples(){
     }
     return this.get('wrap-all', js);
   };
+
+  this.append = function(target, type, cb){
+    var tests = '<script>' + this.build(type) + '</script>';
+    fs.readFile(path.resolve(target), 'utf8', function (err,data) {
+      if(err)cb(err);
+      data = data.replace(/($|(?:<\/body))/, tests+'$1');
+      temp.open('at-examples', function(err, info) {
+        if(err)cb(err);
+        fs.write(info.fd, data);
+        fs.close(info.fd, function(err) {
+          done(false, info.fd);
+        });
+      });
+    });
+  }
 }
 
 Examples.prototype.setup = require('./defaults.js');

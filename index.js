@@ -21,7 +21,7 @@ module.exports = function(instrumenter){
     var oldStartWalk = instrumenter.walker.startWalk;
     instrumenter.walker.startWalk = function(program){
       oldStartWalk.apply(this, arguments);
-      this.instrument(program);
+      result.instrument(program);
     };
 
     instrumenter.examples = result;

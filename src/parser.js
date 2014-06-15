@@ -29,7 +29,13 @@ module.exports = function(program, tests){
     }
   }
 
-  enter({body : [program]});
+  // Workaround to get all commments at the top of a file
+  var root = {body : [program]}
+  enter(root);
+  for(var i = 1; i < root.body.length; i++){
+    program.body.splice(0, 0, root.body[i]);
+  }
+
   estraverse.traverse(program, {
     enter: enter
   });
@@ -84,7 +90,7 @@ function parseExampleLine(left, right, result){
   }else{
     var test = {
       left: wrapEval(left),
-      title: left + ' // ' + right
+      title: (left + ' // ' + right).replace(/"/g, '\\"')
     };
 
     if(right === 'throws'){
@@ -92,7 +98,7 @@ function parseExampleLine(left, right, result){
       test.right = '';
     }else{
       test.type  = 'deepEqual';
-      test.right = wrapEval(right);
+      test.right = right;
     }
 
     // MAYBE TODO: Filter strings to reduce false positives

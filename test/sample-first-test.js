@@ -7,6 +7,7 @@ var path      = require('path');
 
 
 function cleanup(code){
+  //return code;
   return escodegen.generate(esprima.parse(code));
 }
 
@@ -20,8 +21,8 @@ describe('Array', function(){
       var file = path.resolve(__dirname, '../sample/first.js');
       fs.readFile(file, 'utf8', function (err,data) {
         data = index.instrument(data);
-
-        write(cleanup(index.build('qunit')));
+        write(data);  
+        //write(cleanup(index.build('qunit')));
 
         assert.equal(-1, [1,2,3].indexOf(5));
         done();
