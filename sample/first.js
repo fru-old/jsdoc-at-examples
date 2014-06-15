@@ -1,5 +1,4 @@
 /**
- * @expose test0
  * @examples
  * isInteger(5)     // true
  * isInteger(5.0)   // true
@@ -8,9 +7,6 @@
  * isInteger('foo') // false
  * isInteger(NaN)   // false
  */
-// @expose test1
-// @expose test2
-// @expose test3
 function isInteger(x) {
   return x === Math.floor(x);
 }
@@ -28,14 +24,8 @@ function isInteger(x) {
    * gYearMonth.test('2100-01')    // false
    */
   var gYearMonth = /^(19|20)\d\d-(0[1-9]|1[012])$/;
-
-  // @expose test1
-  // @expose test2
-  var test;
 })();
 
-
-// @expose test1
 /**
  * JavaScript edge cases: undefined
  * @examples
@@ -44,8 +34,6 @@ function isInteger(x) {
  *
  * if(foobar)done() // throws
  * typeof foobar    // "undefined"
- * {wrap: foobar}   // {wrap: void 0}
+ * window.foobar    // void 0
  *
  */
-
- // @expose test2

@@ -152,18 +152,14 @@ function buildExpose(key){
     'expression': {
       'type': 'CallExpression',
       'callee': {
-        'type': 'CallExpression',
-        'callee': {
-          'type': 'Identifier',
-          'name': 'Function'
-        },
-        'arguments': [{
-          'type': 'Literal',
-          'value': value,
-          'raw': '"' + value + '"'
-        }]
+        'type': 'Identifier',
+        'name': 'evale'
       },
-      'arguments': []
+      'arguments': [{
+        'type': 'Literal',
+        'value': value,
+        'raw': '"' + value + '"'
+      }]
     }
   };
 }

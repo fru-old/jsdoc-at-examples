@@ -8,9 +8,10 @@ module.exports = function (grunt) {
           src: ['first.js'],
           instrumentedFiles: 'temp/',
           htmlReport: 'report/'
-        }
+        },
+        atExamples: 'qunit.html'
       },
-      all: []
+      all: ['qunit.html']
     }
   });
 
