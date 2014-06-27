@@ -47,6 +47,9 @@ module.exports = function(program, tests){
  */
 function parseComment(comment, append){
 
+  // escape $ in comments
+  comment = comment.replace(/$/g, '\\$');
+
   var expose, examples, current, statement;
   var test = {
     setup: [],
