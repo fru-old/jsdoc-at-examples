@@ -17,6 +17,10 @@ function Examples(){
       .replace(/<%value%>/g, value || '');
   };
 
+  this.clear = function(){
+    tests = [];
+  }
+
   this.instrument = function(program){
     if(typeof program === 'string'){
       program = esprima.parse(program, {
