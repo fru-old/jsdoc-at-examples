@@ -47,8 +47,14 @@ module.exports = function(program, tests){
  */
 function parseComment(comment, append){
 
+  // separatet so that this code could be parsed
+  var escapedollar = '----esacepedollar'+'---'+'jsdoc-at-examples---';
+  function unescape(result){
+    return result.replace(new RegExp(escapedollar,'g'), '$$');
+  }
+
   // escape $ in comments
-  comment = comment.replace(/$/g, '\\$');
+  comment.value = comment.value.replace(/\$/g, escapedollar);
 
   var expose, examples, current, statement;
   var test = {
@@ -59,15 +65,15 @@ function parseComment(comment, append){
   var hastest = false;
 
   // Normalize comment
-  comment = comment.value.replace(/\r/g,'');
+  comment = comment.value.replace(/\$/g, '$$$').replace(/\r/g,'');
   // Remove empty lines from comment
-  comment = comment.replace(RegExp(spansLine('')), '');
+  comment = comment.replace(/\$/g, '$$$').replace(RegExp(spansLine('')), '');
   // Build @expose and @examples regex
   expose   = RegExp(spansLine('@expose\\s*('+identifier()+'*)'),'g');
   examples = RegExp(spansLine('@examples')+'((?:'+spansLine('.*//.*')+')*)','g');
 
   while (current = expose.exec(comment)){
-    statement = buildExpose(current[1]);
+    statement = buildExpose(unescape(current[1]));
     if(statement)append(statement);
   }
   while(current = splitLines(examples.exec(comment))){

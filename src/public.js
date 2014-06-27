@@ -44,8 +44,15 @@ function Examples(){
       js += this.get('wrap-module', this.applyTemplate(tests[i]));
     }
     js = this.get('wrap-all', js);
+
     return escodegen.generate(esprima.parse(js));
   };
+
+  // TODO: use this globally
+  this.unescapedollar = function(result){
+    var escapedollar = '----esacepedollar'+'---'+'jsdoc-at-examples---';
+    return result.replace(new RegExp(escapedollar,'g'), '$$');
+  }
 }
 
 Examples.prototype.setup = require('./defaults.js');
