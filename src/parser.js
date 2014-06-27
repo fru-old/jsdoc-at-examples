@@ -146,21 +146,65 @@ function splitLines(comment){
 function buildExpose(key){
   if(!key)return '';
 
-  var value = 'try{this.' + key + '=' + key + ';}catch(e){};';
   return {
-    'type': 'ExpressionStatement',
-    'expression': {
-      'type': 'CallExpression',
-      'callee': {
-        'type': 'Identifier',
-        'name': 'eval'
-      },
-      'arguments': [{
-        'type': 'Literal',
-        'value': value,
-        'raw': '"' + value + '"'
-      }]
-    }
+    "type": "TryStatement",
+    "block": {
+      "type": "BlockStatement",
+      "body": [
+        {
+          "type": "ExpressionStatement",
+          "expression": {
+            "type": "AssignmentExpression",
+            "operator": "=",
+            "left": {
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {
+                "type": "CallExpression",
+                "callee": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "Identifier",
+                    "name": "Function"
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": "return this",
+                      "raw": "'return this'"
+                    }
+                  ]
+                },
+                "arguments": []
+              },
+              "property": {
+                "type": "Identifier",
+                "name": key
+              }
+            },
+            "right": {
+              "type": "Identifier",
+              "name": key
+            }
+          }
+        }
+      ]
+    },
+    "guardedHandlers": [],
+    "handlers": [
+      {
+        "type": "CatchClause",
+        "param": {
+          "type": "Identifier",
+          "name": "e"
+        },
+        "body": {
+          "type": "BlockStatement",
+          "body": []
+        }
+      }
+    ],
+    "finalizer": null
   };
 }
 
